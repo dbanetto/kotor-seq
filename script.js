@@ -11,8 +11,8 @@ function loadNext() {
     .split('')
   // filters out non-numeric characters
     .filter(ele => !isNaN(ele))
-  // reduces the characters into an ordered (by occurance) list
-  // each element is the number and # of it occurs in the string 
+  // reduces the characters into an ordered (by occurrence) list
+  // each element is the number and # of times it occurs
     .reduce((count, numb) => {
       var number = count.find((ele) => {
         return ele.num == numb;
@@ -28,10 +28,12 @@ function loadNext() {
       return count;
     }, [])
   // reduces the tally into a formatted string
-  // of {# of occurances}{number} with each value joined
+  // of {# of occurrences}{number} with each value joined
   // by -'s
     .reduce((acc, cur) => {
 
+      // if the accumulator is falsely (e.g. "") then it is
+      // the first number and does not need a -
       if (acc) {
         return acc + "-" + cur.count.toString() + cur.num.toString()
       } else {
