@@ -14,9 +14,7 @@ function loadNext() {
   // reduces the characters into an ordered (by occurrence) list
   // each element is the number and # of times it occurs
     .reduce((count, numb) => {
-      var number = count.find((ele) => {
-        return ele.num == numb;
-      });
+      var number = count.find((ele) =>  ele.num == numb);
 
       if (number === undefined) {
         // first time seeing the number
@@ -34,11 +32,6 @@ function loadNext() {
 
       // if the accumulator is falsely (e.g. "") then it is
       // the first number and does not need a -
-      if (acc) {
-        return acc + "-" + cur.count.toString() + cur.num.toString()
-      } else {
-        return cur.count.toString() + cur.num.toString()
-      }
+      return (acc ? acc + "-" : "") + cur.count.toString() + cur.num.toString();
     }, "");
-
 }
